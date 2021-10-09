@@ -6,6 +6,10 @@ $twig = new \Twig\Environment($loader);
 
 $url = $_SERVER["REQUEST_URI"];
 
+$title = "";
+$template = "";
+
+$context = [];
 
 if ($url == "/") {
     $title = "Главная";
@@ -13,14 +17,18 @@ if ($url == "/") {
 
 } elseif (preg_match("#/bebop#", $url)) {
     $title = "Ковбой Бибоп";
-    $template = "bebop.twig";
+    $template = "base_img.twig";
+
+    $context['img'] = "/img/bebop_poster.jpeg";
 
 } elseif (preg_match("#/trigan#", $url)) {
     $title = "Триган";
-    $template = "trigan.twig";
+    $template = "base_img.twig";
+    
+    $context['img'] = "/img/trigan_poster.jpeg";
 }
 
-echo $twig->render($template, [
-    "title" => $title
-]);
+$context['title'] = $title;
+
+echo $twig->render($template, $context)
 ?>  
