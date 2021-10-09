@@ -6,17 +6,21 @@ $twig = new \Twig\Environment($loader);
 
 $url = $_SERVER["REQUEST_URI"];
 
+
 if ($url == "/") {
-    // это убираем require "../views/main.html";
-    
-    echo $twig->render("main.html");
+    $title = "Главная";
+    $template = "main.twig";
+
 } elseif (preg_match("#/bebop#", $url)) {
-    // и это тоже require "../views/mermaid.html";
-    
-    echo $twig->render("bebop.html");
+    $title = "Ковбой Бибоп";
+    $template = "bebop.twig";
+
 } elseif (preg_match("#/trigan#", $url)) {
-    // и вот это require "../views/uranus.html";
-    
-    echo $twig->render("trigan.html");
+    $title = "Триган";
+    $template = "trigan.twig";
 }
-?>
+
+echo $twig->render($template, [
+    "title" => $title
+]);
+?>  
