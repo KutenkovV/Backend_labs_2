@@ -17,15 +17,27 @@ if ($url == "/") {
 
 } elseif (preg_match("#/bebop#", $url)) {
     $title = "Ковбой Бибоп";
-    $template = "base_img.twig";
+    $template = "__object.twig";
 
-    $context['img'] = "/img/bebop_poster.jpeg";
+    if(preg_match("#^/bebop/image#", $url)) {
+        $template = "image.twig";
+        $context['img'] = "/img/bebop_poster.jpeg";
+
+    } else if (preg_match("#^/bebop/info#", $url)) {
+        $template = "bebop_info.twig";
+    }
 
 } elseif (preg_match("#/trigan#", $url)) {
     $title = "Триган";
-    $template = "base_img.twig";
-    
-    $context['img'] = "/img/trigan_poster.jpeg";
+    $template = "__object.twig";
+
+    if(preg_match("#^/trigan/image#", $url)) {
+        $template = "image.twig";
+        $context['img'] = "/img/trigan_poster.jpeg";
+
+    } else if (preg_match("#^/trigan/info#", $url)) {
+        $template = "trigan_info.twig";
+    }
 }
 
 $context['title'] = $title;

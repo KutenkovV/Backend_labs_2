@@ -1,0 +1,24 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+
+  <div>
+    {{title}} -- чудо природы
+  </div>
+
+  <div class="pt-4">
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" href="/bebop/image">Картинка</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bebop/bebop_info">Описание</a>
+      </li>
+    </ul>
+
+    {% block objContent %}
+
+    {% endblock %}
+  </div>
+  
+{% endblock %}
