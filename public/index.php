@@ -11,6 +11,24 @@ $template = "";
 
 $context = [];
 
+$menu = [
+    [
+        "title" => "Главная",
+        "url" => "/",
+    ],
+    [
+        "title" => "Ковбой Бибоп",
+        "url" => "/bebop",
+    ],
+    [
+        "title" => "Триган",
+        "url" => "/trigan",
+    ]
+];
+
+$context['title'] = $title;
+$context['menu'] = $menu;
+
 if ($url == "/") {
     $title = "Главная";
     $template = "main.twig";
@@ -18,11 +36,13 @@ if ($url == "/") {
 } elseif (preg_match("#/bebop#", $url)) {
     $title = "Ковбой Бибоп";
     $template = "__object.twig";
+
     $context['img_content'] = "/bebop/image";
     $context['info_content'] = "/bebop/info";
 
     if(preg_match("#^/bebop/image#", $url)) {
         $template = "image.twig";
+        
         $context['img'] = "/img/bebop_poster.jpeg";
 
     } else if (preg_match("#^/bebop/info#", $url)) {
@@ -32,11 +52,13 @@ if ($url == "/") {
 } elseif (preg_match("#/trigan#", $url)) {
     $title = "Триган";
     $template = "__object.twig";
+
     $context['img_content'] = "/trigan/image";
     $context['info_content'] = "/trigan/info";
 
     if(preg_match("#^/trigan/image#", $url)) {
         $template = "image.twig";
+
         $context['img'] = "/img/trigan_poster.jpeg";
 
     } else if (preg_match("#^/trigan/info#", $url)) {
