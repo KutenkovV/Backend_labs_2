@@ -9,8 +9,6 @@ require_once "../controllers/TriganImageController.php";
 require_once "../controllers/TriganInfoController.php";
 require_once "../controllers/Controller404.php";
 
-
-
 $loader = new \Twig\Loader\FilesystemLoader('../views');
 $twig = new \Twig\Environment($loader);
 
@@ -44,5 +42,4 @@ if ($url == "/") {
 if ($controller) {
     $controller->get();
 }
-?> 
- <!-- $context['url'] = $url; -->
+?>

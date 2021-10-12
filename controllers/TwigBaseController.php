@@ -4,6 +4,21 @@ require_once "BaseController.php";
 class TwigBaseController extends BaseController {
     public $title = "";
     public $template = "";
+    public $menu = [
+        [
+            "title" => "Главная",
+            "url" => "/",
+        ],
+        [
+            "title" => "Ковбой Бибоп",
+            "url" => "/bebop",
+        ],
+        [
+            "title" => "Триган",
+            "url" => "/trigan",
+        ]
+    ];
+    
     protected \Twig\Environment $twig;
     
     public function __construct($twig)
