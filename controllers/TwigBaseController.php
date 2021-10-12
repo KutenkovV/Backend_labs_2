@@ -4,7 +4,7 @@ require_once "BaseController.php";
 class TwigBaseController extends BaseController {
     public $title = "";
     public $template = "";
-    protected \Twig\Environment $twig = null;
+    protected \Twig\Environment $twig;
     
     public function __construct($twig)
     {

@@ -3,13 +3,14 @@ require_once '../vendor/autoload.php';
 require_once "../controllers/MainController.php";
 
 $loader = new \Twig\Loader\FilesystemLoader('../views');
-
 $twig = new \Twig\Environment($loader);
 
 $url = $_SERVER["REQUEST_URI"];
 
 $title = "";
 $template = "";
+
+$context = [];
 
 $menu = [
     [
@@ -26,14 +27,9 @@ $menu = [
     ]
 ];
 
-$context['title'] = $title;
-$context['menu'] = $menu;
-
-$context = [];
 $controller = null;
 
 if ($url == "/") {
-    
     $controller = new MainController($twig);
 
 } elseif (preg_match("#/bebop#", $url)) {
@@ -42,11 +38,13 @@ if ($url == "/") {
 
     $context['img_content'] = "/bebop/image";
     $context['info_content'] = "/bebop/info";
+    $context['url'] = $url;
 
     if(preg_match("#^/bebop/image#", $url)) {
         $template = "image.twig";
 
         $context['img'] = "/img/bebop_poster.jpeg";
+
 
     } else if (preg_match("#^/bebop/info#", $url)) {
         $template = "bebop_info.twig";
@@ -58,6 +56,7 @@ if ($url == "/") {
 
     $context['img_content'] = "/trigan/image";
     $context['info_content'] = "/trigan/info";
+    $context['url'] = $url;
 
     if(preg_match("#^/trigan/image#", $url)) {
         $template = "image.twig";
@@ -72,4 +71,5 @@ if ($url == "/") {
 if ($controller) {
     $controller->get();
 }
+
 ?>  
