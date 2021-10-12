@@ -1,5 +1,7 @@
 <?php
 require_once '../vendor/autoload.php';
+require_once "../controllers/MainController.php";
+
 $loader = new \Twig\Loader\FilesystemLoader('../views');
 
 $twig = new \Twig\Environment($loader);
@@ -8,8 +10,6 @@ $url = $_SERVER["REQUEST_URI"];
 
 $title = "";
 $template = "";
-
-$context = [];
 
 $menu = [
     [
@@ -29,9 +29,12 @@ $menu = [
 $context['title'] = $title;
 $context['menu'] = $menu;
 
+$context = [];
+$controller = null;
+
 if ($url == "/") {
-    $title = "Главная";
-    $template = "main.twig";
+    
+    $controller = new MainController($twig);
 
 } elseif (preg_match("#/bebop#", $url)) {
     $title = "Ковбой Бибоп";
@@ -42,7 +45,7 @@ if ($url == "/") {
 
     if(preg_match("#^/bebop/image#", $url)) {
         $template = "image.twig";
-        
+
         $context['img'] = "/img/bebop_poster.jpeg";
 
     } else if (preg_match("#^/bebop/info#", $url)) {
@@ -66,7 +69,7 @@ if ($url == "/") {
     }
 }
 
-$context['title'] = $title;
-
-echo $twig->render($template, $context)
+if ($controller) {
+    $controller->get();
+}
 ?>  
