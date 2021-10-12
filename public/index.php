@@ -1,6 +1,15 @@
 <?php
 require_once '../vendor/autoload.php';
 require_once "../controllers/MainController.php";
+require_once "../controllers/BebopController.php";
+require_once "../controllers/BebopImageController.php";
+require_once "../controllers/BebopInfoController.php";
+require_once "../controllers/TriganController.php";
+require_once "../controllers/TriganImageController.php";
+require_once "../controllers/TriganInfoController.php";
+require_once "../controllers/Controller404.php";
+
+
 
 $loader = new \Twig\Loader\FilesystemLoader('../views');
 $twig = new \Twig\Environment($loader);
@@ -12,64 +21,28 @@ $template = "";
 
 $context = [];
 
-$menu = [
-    [
-        "title" => "Главная",
-        "url" => "/",
-    ],
-    [
-        "title" => "Ковбой Бибоп",
-        "url" => "/bebop",
-    ],
-    [
-        "title" => "Триган",
-        "url" => "/trigan",
-    ]
-];
-
-$controller = null;
+$controller = new Controller404($twig);
 
 if ($url == "/") {
     $controller = new MainController($twig);
-
+}  elseif(preg_match("#^/bebop/image#", $url)) {
+    $controller = new BebopImageController($twig);
+} else if (preg_match("#^/bebop/info#", $url)) {
+    $controller = new BebopInfoController($twig);
 } elseif (preg_match("#/bebop#", $url)) {
-    $title = "Ковбой Бибоп";
-    $template = "__object.twig";
-
-    $context['img_content'] = "/bebop/image";
-    $context['info_content'] = "/bebop/info";
-    $context['url'] = $url;
-
-    if(preg_match("#^/bebop/image#", $url)) {
-        $template = "image.twig";
-
-        $context['img'] = "/img/bebop_poster.jpeg";
+    $controller = new BebopController($twig); 
 
 
-    } else if (preg_match("#^/bebop/info#", $url)) {
-        $template = "bebop_info.twig";
-    }
-
+} elseif(preg_match("#^/trigan/image#", $url)) {
+    $controller = new TriganImageController($twig);
+} else if (preg_match("#^/trigan/info#", $url)) {
+    $controller = new TriganInfoController($twig);
 } elseif (preg_match("#/trigan#", $url)) {
-    $title = "Триган";
-    $template = "__object.twig";
-
-    $context['img_content'] = "/trigan/image";
-    $context['info_content'] = "/trigan/info";
-    $context['url'] = $url;
-
-    if(preg_match("#^/trigan/image#", $url)) {
-        $template = "image.twig";
-
-        $context['img'] = "/img/trigan_poster.jpeg";
-
-    } else if (preg_match("#^/trigan/info#", $url)) {
-        $template = "trigan_info.twig";
-    }
+    $controller = new TriganController($twig);
 }
 
 if ($controller) {
     $controller->get();
 }
-
-?>  
+?> 
+ <!-- $context['url'] = $url; -->

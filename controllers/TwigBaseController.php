@@ -15,6 +15,10 @@ class TwigBaseController extends BaseController {
     {
         $context = parent::getContext();
         $context['title'] = $this->title;
+        $context['menu'] = $this->menu;
+
+        $url = $_SERVER["REQUEST_URI"];
+        $context['url'] = $url;
 
         return $context;
     }
