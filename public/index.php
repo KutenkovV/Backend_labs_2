@@ -18,6 +18,8 @@ if ($url == "/") {
 } elseif (preg_match("#/bebop#", $url)) {
     $title = "Ковбой Бибоп";
     $template = "__object.twig";
+    $context['img_content'] = "/bebop/image";
+    $context['info_content'] = "/bebop/info";
 
     if(preg_match("#^/bebop/image#", $url)) {
         $template = "image.twig";
@@ -30,6 +32,8 @@ if ($url == "/") {
 } elseif (preg_match("#/trigan#", $url)) {
     $title = "Триган";
     $template = "__object.twig";
+    $context['img_content'] = "/trigan/image";
+    $context['info_content'] = "/trigan/info";
 
     if(preg_match("#^/trigan/image#", $url)) {
         $template = "image.twig";

@@ -2,23 +2,23 @@
 
 {% block content %}
 
-  <div>
-    {{title}} -- чудо природы
+  <div class="pt-2">
+    <p>Вы смотрите страницу - "{{title}}"</p>
   </div>
 
-  <div class="pt-4">
+  <div>
     <ul class="nav nav-pills">
       <li class="nav-item">
-        <a class="nav-link" href="/bebop/image">Картинка</a>
+        <a class="nav-link" href="{{ img_content }}">Картинка</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/bebop/bebop_info">Описание</a>
+        <a class="nav-link" href=" {{ info_content }} ">Описание</a>
       </li>
     </ul>
-
-    {% block objContent %}
-
-    {% endblock %}
   </div>
+  
+  {% block objContent %}
+
+  {% endblock %}
   
 {% endblock %}
