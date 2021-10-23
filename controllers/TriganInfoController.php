@@ -9,6 +9,7 @@ class TriganInfoController extends TriganController {
     public function getContext(): array
     {
         $context = parent::getContext();
+        $context[] = "";
         return $context;
     }
 }

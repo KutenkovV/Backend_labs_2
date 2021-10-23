@@ -9,9 +9,17 @@
   <div>
     <ul class="nav nav-pills">
       <li class="nav-item">
+
+        {{ btn("Картинка", "url", true, "warning") }}
+
         <a class="nav-link {{ img_content == url ? 'active' }}" href="{{ img_content }}">Картинка</a>
       </li>
       <li class="nav-item">
+
+        {% macro input() %}
+          {{ btn("Описание", "url", true, "warning") }}
+        {% endmacro %}
+
         <a class="nav-link {{ info_content == url ? 'active' }}" href=" {{ info_content }} ">Описание</a>
       </li>
     </ul>

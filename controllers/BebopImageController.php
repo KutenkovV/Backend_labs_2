@@ -5,7 +5,6 @@ class BebopImageController extends BebopController {
 
     public $template = "image.twig";
 
-
     public function getContext(): array
     {
         $context = parent::getContext();

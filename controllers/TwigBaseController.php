@@ -18,6 +18,23 @@ class TwigBaseController extends BaseController {
             "url" => "/trigan",
         ]
     ];
+
+    public $navigation = [
+        [
+            "title" => "Ковбой Бибоп",
+            "url" => "/bebop",
+
+            "url_image" => "/bebop/image",
+            "url_info" => "/bebop/info"
+        ],
+        [
+            "title" => "Триган",
+            "url" => "/trigan",
+
+            "url_image" => "/trigan/image",
+            "url_info" => "/trigan/info"
+        ]
+    ];
     
     protected \Twig\Environment $twig;
     
@@ -31,6 +48,7 @@ class TwigBaseController extends BaseController {
         $context = parent::getContext();
         $context['title'] = $this->title;
         $context['menu'] = $this->menu;
+        $context['navigation'] = $this->navigation;
 
         $url = $_SERVER["REQUEST_URI"];
         $context['url'] = $url;
