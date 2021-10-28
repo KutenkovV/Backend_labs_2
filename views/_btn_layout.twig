@@ -1,5 +1,4 @@
 {% macro input(title, class = false, type = "text", url) %}
-    <input type="{{ type }}" name="{{ name }}" value="{{ value|e }}" size="{{ size }}"/>
 
 {% if class == true -%}
     <a type = "{{ type }}" class = "btn btn-primary" href="{{ url }}">{{ title }}</a>

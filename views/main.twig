@@ -1,4 +1,5 @@
 {% extends "__layout.twig" %}
+{% import "_btn_layout.twig" as forms %}
 
 {% block content %}
 
@@ -8,9 +9,9 @@
     p.s. всего то просто спокойно посидеть и подумать надо было хддд -->
     {% for item in navigation %}
         <li class="list-group-item">
-            <a type="button" class="btn btn-primary" href="{{ item.url }}"> {{ item.title }} </a>
-            <a type="button" class="btn btn-link" href="{{ item.url_image}}">Картинка</a>
-            <a type="button" class="btn btn-link" href="{{ item.url_info}}">Описание</a>
+            {{ forms.input( item.title, true, "button", item.url ) }}
+            {{ forms.input('Картинка', false, "button", item.url_image ) }}
+            {{ forms.input('Описание', false, "button", item.url_info ) }}
         </li>
     {% endfor %}
 </ul>
