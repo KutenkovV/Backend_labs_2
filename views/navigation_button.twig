@@ -1,0 +1,14 @@
+{% import "_btn_layout.twig" as forms %}
+{% block main_content %}
+
+<ul class="list-group">
+    {% for item in navigation %}
+        <li class="list-group-item">
+            {{ forms.btn( item.title, true, item.url ) }}
+            {{ forms.btn('Картинка', false, item.url_image ) }}
+            {{ forms.btn('Описание', false, item.url_info ) }}
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

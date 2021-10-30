@@ -1,19 +1,9 @@
 {% extends "__layout.twig" %}
-{% import "_btn_layout.twig" as forms %}
+{% import "__button_macro.twig" as forms %}
 
 {% block content %}
-
-<ul class="list-group">
-
-    <!-- АБАЛДЕТЬ ОКАЗЫВАЕТСЯ это реально удобная штука 
-    p.s. всего то просто спокойно посидеть и подумать надо было хддд -->
-    {% for item in navigation %}
-        <li class="list-group-item">
-            {{ forms.input( item.title, true, "button", item.url ) }}
-            {{ forms.input('Картинка', false, "button", item.url_image ) }}
-            {{ forms.input('Описание', false, "button", item.url_info ) }}
-        </li>
-    {% endfor %}
+<ul class="list-group"> 
+    {# главная страница с навигацией #}
+    {% include 'navigation_button.twig' %}
 </ul>
-
 {% endblock %}

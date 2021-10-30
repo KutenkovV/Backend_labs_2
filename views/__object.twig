@@ -1,7 +1,7 @@
 {% extends "__layout.twig" %}
 
 {% block content %}
-{% import "_btn_layout.twig" as forms %}
+{% import "__button_macro.twig" as forms %}
 
   <div class="pt-2">
     <p>Вы смотрите страницу - "{{title}}"</p>
@@ -10,12 +10,10 @@
   <div>
     <ul class="nav nav-pills">
       <li class="nav-item">
-        {{ forms.input('Картинка', img_active, "button", img_content) }}
-        <!-- <a class="nav-link {{ img_content == url ? 'active' }}" href="{{ img_content }}">Картинка</a> -->
+        {{ forms.btn('Картинка', img_active, url_image) }}
       </li>
       <li class="nav-item">
-        {{ forms.input('Описание', info_active, "button", info_content) }}
-        <!-- <a class="nav-link {{ info_content == url ? 'active' }}" href=" {{ info_content }} ">Описание</a> -->
+        {{ forms.btn('Описание', info_active, url_info) }}
       </li>
     </ul>
   </div>

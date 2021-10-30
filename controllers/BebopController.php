@@ -10,13 +10,13 @@ class BebopController extends TwigBaseController
     {
         $context = parent::getContext();
 
-        $context['img_content'] = "/bebop/image";
-        $context['info_content'] = "/bebop/info";
+        $context['url_image'] = "/bebop/image";
+        $context['url_info'] = "/bebop/info";
 
-        if ($context['img_content'] == $context['url']){
+        if ($context['url_image'] == $context['url']){
             $context['img_active'] = true;
         }
-        if ($context['info_content'] == $context['url']){
+        if ($context['url_info'] == $context['url']){
             $context['info_active'] = true;
         }
 

@@ -10,13 +10,13 @@ class TriganController extends TwigBaseController
     {
         $context = parent::getContext();
 
-        $context['img_content'] = "/trigan/image";
-        $context['info_content'] = "/trigan/info";
+        $context['url_image'] = "/trigan/image";
+        $context['url_info'] = "/trigan/info";
 
-        if ($context['img_content'] == $context['url']){
+        if ($context['url_image'] == $context['url']){
             $context['img_active'] = true;
         }
-        if ($context['info_content'] == $context['url']){
+        if ($context['url_info'] == $context['url']){
             $context['info_active'] = true;
         }
 
