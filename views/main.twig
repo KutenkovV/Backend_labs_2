@@ -2,8 +2,11 @@
 {% import "__button_macro.twig" as forms %}
 
 {% block content %}
-<ul class="list-group"> 
-    {# главная страница с навигацией #}
-    {% include 'navigation_button.twig' %}
-</ul>
+
+<div class="d-flex justify-content-center">
+    <ul class="list-group flex-row row"> 
+        {# главная страница с навигацией #}
+        {% include 'navigation_button.twig' %}
+    </ul>
+</div>
 {% endblock %}

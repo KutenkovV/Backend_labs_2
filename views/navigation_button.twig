@@ -1,14 +1,24 @@
 {% import "__button_macro.twig" as forms %}
 {% block main_content %}
 
-<ul class="list-group">
-    {% for item in navigation %}
-        <li class="list-group-item">
-            {{ forms.btn( item.title, true, item.url ) }}
-            {{ forms.btn('Картинка', false, item.url_image ) }}
-            {{ forms.btn('Описание', false, item.url_info ) }}
+{% for object in anime_series %}
+    <div class="col-3"> {# специально всё обернул в див, чтобы блоки не слипались #}
+        <li class="list-group-item m-2 text-center">
+            <div>
+                <img src="{{ object.image }}" class="border border-2 rounded-3" style="width: 240px; height: 320px;">
+            </div>
+
+            <div class="mt-2">
+                <div class="row">
+                    {{ forms.btn( object.title, true, object.url ) }}
+                </div>
+                <div>
+                    {{ forms.btn('Картинка', false, object.url_image ) }}
+                    {{ forms.btn('Описание', false, object.url_info ) }} 
+                </div> 
+            </div>
         </li>
-    {% endfor %}
-</ul>
+    </div>
+{% endfor %}
 
 {% endblock %}

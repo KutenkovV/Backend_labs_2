@@ -30,6 +30,9 @@ class MainController extends TwigBaseController {
         $url = $_SERVER["REQUEST_URI"];
         $context['url'] = $url;
 
+        $query = $this->pdo->query("SELECT * FROM anime_series");
+        $context['anime_series'] = $query->fetchAll();
+
         return $context;
     }
 }
