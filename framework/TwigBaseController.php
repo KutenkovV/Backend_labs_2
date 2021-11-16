@@ -4,8 +4,10 @@ require_once "BaseController.php";
 class TwigBaseController extends BaseController {
     public $title = "";
     public $template = "";
-    public $img_active = false;
-    public $info_active = false;
+
+    public $info = "";
+    public $description = "";
+    public $ObjectID = "";
     
     public $menu = [
         [
@@ -23,9 +25,8 @@ class TwigBaseController extends BaseController {
     ];
     
     protected \Twig\Environment $twig;
-    
-    public function __construct($twig)
-    {
+
+    public function setTwig($twig) {
         $this->twig = $twig;
     }
     

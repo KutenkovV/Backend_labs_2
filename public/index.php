@@ -1,13 +1,12 @@
 <?php
+
 require_once '../vendor/autoload.php';
+require_once '../framework/autoload.php';
 require_once "../controllers/MainController.php";
-require_once "../controllers/BebopController.php";
-require_once "../controllers/BebopImageController.php";
-require_once "../controllers/BebopInfoController.php";
-require_once "../controllers/TriganController.php";
-require_once "../controllers/TriganImageController.php";
-require_once "../controllers/TriganInfoController.php";
 require_once "../controllers/Controller404.php";
+require_once "../controllers/ObjectController.php";
+require_once "../controllers/ObjectImageController.php";
+require_once "../controllers/ObjectInfoController.php";
 
 $loader = new \Twig\Loader\FilesystemLoader('../views');
 $twig = new \Twig\Environment($loader, [
@@ -15,36 +14,13 @@ $twig = new \Twig\Environment($loader, [
 ]);
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
-$url = $_SERVER["REQUEST_URI"];
-
-$title = "";
-$template = "";
-
-$context = [];
-
-$controller = new Controller404($twig);
 $pdo = new PDO("mysql:host=localhost;dbname=anime;charset=utf8", "root", "");
 
-if ($url == "/") {
-    $controller = new MainController($twig);
-}  elseif(preg_match("#^/bebop/image#", $url)) {
-    $controller = new BebopImageController($twig);
-} else if (preg_match("#^/bebop/info#", $url)) {
-    $controller = new BebopInfoController($twig);
-} elseif (preg_match("#/bebop#", $url)) {
-    $controller = new BebopController($twig); 
+$router = new Router($twig, $pdo);
+$router->add("/", MainController::class);
+$router->add("/anime-series/(?P<id>\d+)", ObjectController::class);
+$router->add("/anime-series/(?P<id>\d+/image)", ObjectImageController::class);
+$router->add("/anime-series/(?P<id>\d+/info)", ObjectInfoController::class);
 
-
-} elseif(preg_match("#^/trigan/image#", $url)) {
-    $controller = new TriganImageController($twig);
-} else if (preg_match("#^/trigan/info#", $url)) {
-    $controller = new TriganInfoController($twig);
-} elseif (preg_match("#/trigan#", $url)) {
-    $controller = new TriganController($twig);
-}
-
-if ($controller) {
-    $controller->setPDO($pdo);
-    $controller->get();
-}
+$router->get_or_default(Controller404::class);
 ?>

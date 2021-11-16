@@ -1,7 +1,9 @@
 {% macro btn(title, class = false, url) %}
     {% if class == true %}
-        <a class="btn btn-primary" href="{{ url }}">{{ title }}</a>
-    {% else %}
-        <a class="btn btn-link" href=" {{ url }} ">{{ title }}</a>
+        <a class="btn btn-primary" href="/anime-series/{{ url }}">{{ title }}</a>
+    {% elseif title == "Картинка" %}
+        <a class="btn btn-link" href="/anime-series/{{ url }}/image">{{ title }}</a>
+    {% elseif title == "Описание" %}
+    <a class="btn btn-link" href="/anime-series/{{ url }}/info">{{ title }}</a>
     {% endif %}
 {% endmacro %}

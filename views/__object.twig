@@ -4,22 +4,24 @@
 {% import "__button_macro.twig" as forms %}
 
   <div class="pt-2">
-    <p>Вы смотрите страницу - "{{title}}"</p>
+    <p>{{ description }}</p>
   </div>
 
   <div>
     <ul class="nav nav-pills">
       <li class="nav-item">
-        {{ forms.btn('Картинка', img_active, url_image) }}
+        <a class = "btn btn-link" href="/anime-series/{{ ObjectID }}/image">Картинка</a>
+        <!-- {{ forms.btn('Картинка', img_active, ObjectID) }} -->
       </li>
       <li class="nav-item">
-        {{ forms.btn('Описание', info_active, url_info) }}
+        <a class = "btn btn-link" href="/anime-series/{{ ObjectID }}/info">Описание</a>
+        <!-- {{ forms.btn('Описание', info_active, ObjectID) }} -->
       </li>
     </ul>
   </div>
-  
-  {% block objContent %}
 
+  {% block objContent %}
+  
   {% endblock %}
   
 {% endblock %}
