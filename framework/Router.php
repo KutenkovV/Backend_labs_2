@@ -33,9 +33,11 @@ class Router {
         $url = $_SERVER["REQUEST_URI"];
         $controller = $default_controller;
 
+        $path = parse_url($url, PHP_URL_PATH);
+
         $mathes = [];
         foreach($this->routes as $route) {
-            if (preg_match($route->route_regexp, $url, $mathes)) {
+            if (preg_match($route->route_regexp, $path, $mathes)) {
                 $controller = $route->controller;
                 break;
             }

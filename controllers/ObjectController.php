@@ -1,6 +1,7 @@
 <?php
+require_once "BaseAnimeTwigController.php";
 
-class ObjectController extends TwigBaseController {
+class ObjectController extends BaseAnimeTwigController {
     public $template = "__object.twig";
 
     public function getContext(): array
