@@ -20,6 +20,7 @@ class MainController extends BaseAnimeTwigController {
 
         $url = $_SERVER["REQUEST_URI"];
         $context['url'] = $url;
+        
         $context['anime_series'] = $query->fetchAll();
 
         return $context;

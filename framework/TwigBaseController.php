@@ -7,8 +7,7 @@ class TwigBaseController extends BaseController {
 
     public $info = "";
     public $description = "";
-    public $ObjectID = "";
-    
+
     public $menu = [
         [
             "title" => "Главная",

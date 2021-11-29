@@ -5,8 +5,6 @@ require_once '../framework/autoload.php';
 require_once "../controllers/MainController.php";
 require_once "../controllers/Controller404.php";
 require_once "../controllers/ObjectController.php";
-require_once "../controllers/ObjectImageController.php";
-require_once "../controllers/ObjectInfoController.php";
 
 $loader = new \Twig\Loader\FilesystemLoader('../views');
 $twig = new \Twig\Environment($loader, [
@@ -19,8 +17,6 @@ $pdo = new PDO("mysql:host=localhost;dbname=anime;charset=utf8", "root", "");
 $router = new Router($twig, $pdo);
 $router->add("/", MainController::class);
 $router->add("/anime-series/(?P<id>\d+)", ObjectController::class);
-$router->add("/anime-series/(?P<id>\d+/image)", ObjectImageController::class);
-$router->add("/anime-series/(?P<id>\d+/info)", ObjectInfoController::class);
 
 $router->get_or_default(Controller404::class);
 ?>

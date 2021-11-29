@@ -1,7 +1,11 @@
 {% extends "__object.twig" %}
 
 {% block objContent %}
+
+{% if contenttype == "information"%}
       <li class="list-group-item mt-2">
             <p>{{ info }}</p>
       </li>
+{% endif %}
+    
 {% endblock %}

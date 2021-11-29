@@ -9,16 +9,29 @@
 
   <div>
     <ul class="nav nav-pills">
-      <li class="nav-item">
-        <a class = "btn btn-link" href="/anime-series/{{ ObjectID }}/image">Картинка</a>
-        <!-- {{ forms.btn('Картинка', img_active, ObjectID) }} -->
+      <li class="nav-item p-1">
+        {{ forms.btnImg('Картинка', object_type, ObjectID) }}
       </li>
-      <li class="nav-item">
-        <a class = "btn btn-link" href="/anime-series/{{ ObjectID }}/info">Описание</a>
-        <!-- {{ forms.btn('Описание', info_active, ObjectID) }} -->
+      <li class="nav-item p-1">
+        {{ forms.btnInf('Описание', object_type, ObjectID) }}
       </li>
     </ul>
   </div>
+
+  {# Тут решаем, что выводить #}
+  {# по хорошему стоило бы оживить как-то шаблоны, но как Q_Q #}
+
+  {% if object_type == "image"%}
+    <li class="list-group-item mt-2">
+      <img src="{{ img }}" style="width: 300px;" alt=""/>
+    </li>
+  {% endif %}
+
+  {% if object_type == "info"%}
+    <li class="list-group-item mt-2">
+      <p>{{ info }}</p>
+    </li>
+  {% endif %}
 
   {% block objContent %}
   

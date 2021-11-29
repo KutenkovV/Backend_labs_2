@@ -20,6 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 
                 <ul class="navbar-nav">
+                    <a class="nav-link active" href="/">Главная</a>
                     {% for type in types %}
                     <li class="nav-item">
                         <a class="nav-link" href="/?type={{ type.type }}">{{ type.type|title }}</a>
@@ -32,8 +33,7 @@
 
     <div class="container mt-4">
         {% block content %}
-            пустота в душе :С
-            хотя именно сюда и пихаются все остальные шаблоны
+            
         {% endblock %}
     </div>
 
