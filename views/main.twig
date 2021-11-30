@@ -5,7 +5,14 @@
 <div class="d-flex row">
     {% for object in anime_series %}
         <ul class="list-group col-3">
-            <li class="list-group-item m-2 text-center">
+            <li class="list-group-item m-2 text-center position-relative">
+                <div class="position-absolute" style="right: 4px; top: 4px">
+                    <form action="/anime-series/{{ object.id }}/delete" method="POST">
+                        <button class="btn btn-danger" type="submit">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </form>
+                </div>
                 <div>
                     <img src="{{ object.image }}" class="border border-2 rounded-3" style="width: 240px; height: 320px;">
                 </div>
