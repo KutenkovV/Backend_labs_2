@@ -32,7 +32,7 @@
         <ul class="list-group">
             {% for object in anime_series %}
             <li class="list-group-item">
-                <a class = "btn btn-link" href="/">{{object.title}}</a>
+                <a class = "btn btn-link" href="/anime-series/{{ object.id }}">{{object.title}}</a>
             </li>
             {% endfor %}
         </ul>

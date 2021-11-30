@@ -8,6 +8,7 @@ class SearchController extends BaseAnimeTwigController {
     {
         $context = parent::getContext();
 
+        $id = isset($_GET['id']) ? $_GET['id'] : '';
         $type = isset($_GET['type']) ? $_GET['type'] : '';
         $title = isset($_GET['title']) ? $_GET['title'] : '';
         $info = isset($_GET['info']) ? $_GET['info'] : '';
@@ -32,6 +33,7 @@ EOL;
 
         $query = $this->pdo->prepare($sql);
 
+        $query->bindValue("id", $id);
         $query->bindValue("title", $title);
         $query->bindValue("type", $type);
         $query->bindValue("info", $info);
