@@ -44,9 +44,9 @@ class Router {
             }
         }
 
-        // echo "<pre>";
-        // print_r($_GET);
-        // echo "</pre>";
+            // echo "<pre>";
+            // print_r($_GET);
+            // echo "</pre>";
 
         $controllerInstance = new $controller();
         $controllerInstance->setPDO($this->pdo);
@@ -56,6 +56,6 @@ class Router {
             $controllerInstance->setTwig($this->twig);
         }
 
-        return $controllerInstance->get(); 
+        return $controllerInstance->process_response();
     }
 }

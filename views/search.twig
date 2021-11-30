@@ -1,0 +1,40 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+    <h1>Поиск</h1>
+    <hr>
+
+    <form action="" class="row g-3">
+        <div class="col-3">
+            <label class="form-label">Тип</label>
+            <select name="type" class="form-select">
+                <option value="Все">Все</option>
+                <option value="Вестерн">Вестерн</option>
+                <option value="Экшен">Экшен</option>
+                <option value="Приключения">Приключения</option>
+            </select>
+        </div>
+
+        <div class="col-3">
+            <label class="form-label">Название</label>
+            <input type="text" class="form-control" name="title" placeholder="Название">
+        </div>
+        <div class="col-3">
+            <label class="form-label">Описание</label>
+            <input type="text" class="form-control" name="info" placeholder="Описание">
+        </div>
+        <div class="col mt-5">
+            <button type="submit" class="btn btn-primary text-end">Найти</button>
+        </div>
+    </form>
+
+    <div class="col mt-4">
+        <ul class="list-group">
+            {% for object in anime_series %}
+            <li class="list-group-item">
+                <a class = "btn btn-link" href="/">{{object.title}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

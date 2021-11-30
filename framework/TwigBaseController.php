@@ -8,20 +8,7 @@ class TwigBaseController extends BaseController {
     public $info = "";
     public $description = "";
 
-    public $menu = [
-        [
-            "title" => "Главная",
-            "url" => "/",
-        ],
-        [
-            "title" => "Ковбой Бибоп",
-            "url" => "/bebop",
-        ],
-        [
-            "title" => "Триган",
-            "url" => "/trigan",
-        ]
-    ];
+    public $menu = [];
     
     protected \Twig\Environment $twig;
 
@@ -41,7 +28,7 @@ class TwigBaseController extends BaseController {
         return $context;
     }
 
-    public function get() {
-        echo $this->twig->render($this->template, $this->getContext());
+    public function get(array $context) { 
+        echo $this->twig->render($this->template, $context); 
     }
 }
