@@ -16,10 +16,6 @@ class AnimeObjectCreateController extends BaseAnimeTwigController {
         move_uploaded_file($tmp_name, "../public/media/$name");
         $image_url = "/media/$name";
 
-        // echo "<pre>";
-        // print_r($_FILES);
-        // echo "</pre>";
-
         $sql = <<<EOL
 INSERT INTO anime_series(title, description, type, info, image)
 VALUES(:title, :description, :type, :info, :image_url)
