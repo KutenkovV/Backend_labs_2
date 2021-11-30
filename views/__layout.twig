@@ -20,17 +20,24 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 
                 <ul class="navbar-nav">
-                    <a class="nav-link active" href="/">Главная</a>
+                    <li>
+                        <a class="nav-link active" href="/">Главная</a>
+                    </li>
+                    
                     {% for type in types %}
                     <li class="nav-item">
                         <a class="nav-link" href="/?type={{ type.type }}">{{ type.type|title }}</a>
                     </li>
                     {% endfor %}
+                    
                     <li>
                         <a class="nav-link active" aria-current="page" href="/search">Поиск</a>
                     </li>
                     <li>
-                        <a class="nav-link active" aria-current="page" href="/anime_series/create">Добавить</a>
+                        <a class="nav-link active" aria-current="page" href="/anime-series/create">Добавить</a>
+                    </li>
+                    <li>
+                        <a class="nav-link active" aria-current="page" href="/anime-series/type_create">Типы</a>
                     </li>
                 </ul>
             </div>

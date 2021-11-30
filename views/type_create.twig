@@ -1,0 +1,45 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+    <h1>Добавление типа</h1>
+    <hr>
+
+    {% if message %}
+    <div class="alert alert-info">
+        {{ message }}
+        {# <a href="/anime-series/{{ id }}">Открыть страницу</a> #}
+    </div>
+    {% endif %}
+    
+    <form action="" method="POST" enctype="multipart/form-data" class="row g-3">
+        <div class="col-4">
+            <label class="form-label">Название</label>
+            <input type="text" class="form-control" name="type_name">
+        </div>
+        <div class="col-4 mb-3">
+            <label class="form-label">Картинка</label>
+            <input type="file" class="form-control" name="image">
+        </div>
+        <div class="col-4 mt-5">
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </div>
+    </form>
+    <hr>
+
+    {# Здесь выводим, что есть в таблице с типами #}
+    <div class="d-flex row">
+        {% for object in anime_type %}
+        <ul class="col-3 mb-2 list-group">
+            <li class="list-group-item text-center">
+                <div>
+                    <a class = "btn btn-link" href="">{{object.type_name}}</a>
+                </div>
+                <div class="mt-2">
+                    <img src="{{ object.image }}" class="border border-2 rounded-3" style="width: 240px; height: 320px;" alt=""/>
+                </div>
+            </li>
+        </ul>
+        {% endfor %}
+    </div>
+
+{% endblock %}
