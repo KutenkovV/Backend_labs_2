@@ -1,7 +1,7 @@
 {% extends "__layout.twig" %}
 
 {% block content %}
-    <h1>Редактирования</h1>
+    <h1>Редактирование</h1>
     <hr>
 
     {% if message %}
@@ -18,20 +18,20 @@
         </div>
         <div class="col-4">
             <label class="form-label">Краткое описание</label>
-            <input type="text" class="form-control" name="description" value="{{ object.info }}
+            <input type="text" class="form-control" name="description" value="{{ object.info }}">
         </div>
         <div class="col-4">
             <label class="form-label">Тип</label>
             <select name="type" class="form-select">
                 {# !!!! момент, где мы юзаем типы из новой таблицы ИМАО !!!! #}
-                {% for type in anime_type %}
+                {# {% for type in anime_type %}
                     <option value="{{ type.name }}" {% if type.name == object.type %}selected{% endif %}>
                         {{ type.name|title }}
                     </option>
-                {% endfor %}
-                {# <option value="Вестерн">Вестерн</option>
-                <option value="Экшен">Экшен</option>
-                <option value="Приключения">Приключения</option> #}
+                {% endfor %} #}
+                <option value="{{ object.type|title }}">Вестерн</option>
+                <option value="{{ object.type|title }}">Экшен</option>
+                <option value="{{ object.type|title }}">Приключения</option>
             </select>
         </div>
 
