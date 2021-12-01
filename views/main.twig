@@ -14,11 +14,9 @@
                         </button>
                     </form>
                     {# кнопка редактирования #}
-                    <form action="/anime-series/{{ object.id }}/edit" method="POST">
-                        <button class="btn btn-light" type="submit">
+                        <A href="/anime-series/{{ object.id }}/edit" class="btn btn-light" type="submit">
                             <i class="fas fa-edit"></i>
-                        </button>
-                    </form>
+                        </a>
                 </div>
                 <div>
                     <img src="{{ object.image }}" class="border border-2 rounded-3" style="width: 240px; height: 320px;">

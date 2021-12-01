@@ -1,7 +1,8 @@
 <?php
 require_once "BaseAnimeTwigController.php";
 
-class AnimeObjectUpdateController extends BaseAnimeTwigController {
+class AnimeObjectUpdateController extends BaseAnimeTwigController
+{
     public $template = "update.twig";
 
     public function getContext(): array
@@ -10,7 +11,8 @@ class AnimeObjectUpdateController extends BaseAnimeTwigController {
         return $context;
     }
 
-    public function get(array $context) {
+    public function get(array $context)
+    {
 
         $id = $this->params['id'];
 
@@ -28,9 +30,10 @@ EOL;
         parent::get($context);
     }
 
-    public function post(array $context) {
-        
-        $id = $_POST['id'];
+    public function post(array $context)
+    {
+
+        $id = $this->params['id'];
         $title = $_POST['title'];
         $description = $_POST['description'];
         $type = $_POST['type'];
@@ -47,27 +50,26 @@ EOL;
 SET title = :title, description = :description, type = :type, info = :info
 WHERE id = :id
 EOL;
-        $query = $this->pdo->prepare($sql);
-        $query->bindValue("id", $id);
-        $query->bindValue("title", $title);
-        $query->bindValue("description", $description);
-        $query->bindValue("type", $type);
-        $query->bindValue("info", $info);
-
+            $query = $this->pdo->prepare($sql);
+            $query->bindValue("id", $id);
+            $query->bindValue("title", $title);
+            $query->bindValue("description", $description);
+            $query->bindValue("type", $type);
+            $query->bindValue("info", $info);
         } else {
             $sql = <<<EOL
             UPDATE anime_series 
 SET title = :title, description = :description, type = :type, info = :info, image = :image_url
 WHERE id = :id
 EOL;
-        $query = $this->pdo->prepare($sql);
-        $query->bindValue("id", $id);
-        $query->bindValue("title", $title);
-        $query->bindValue("description", $description);
-        $query->bindValue("type", $type);
-        $query->bindValue("info", $info);
-        $query->bindValue("image_url", $image_url);
-}
+            $query = $this->pdo->prepare($sql);
+            $query->bindValue("id", $id);
+            $query->bindValue("title", $title);
+            $query->bindValue("description", $description);
+            $query->bindValue("type", $type);
+            $query->bindValue("info", $info);
+            $query->bindValue("image_url", $image_url);
+        }
 
         $query->execute();
         $context['message'] = 'Редактирование прошло успешно!';

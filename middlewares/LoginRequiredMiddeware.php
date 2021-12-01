@@ -15,7 +15,7 @@ EOL;
         // $query->bindValue("password", $password);
         
         $query->execute([':username' => $user_input, ':password' => $password_input]);
-        if ($query->fetchColumn()) {
+        if ($query->fetchAll()) {
         }else{
             header('WWW-Authenticate: Basic realm="Fraction"');
             http_response_code(401); 
