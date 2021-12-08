@@ -25,6 +25,17 @@ class TwigBaseController extends BaseController {
         $url = $_SERVER["REQUEST_URI"];
         $context['url'] = $url;
 
+        if(!isset($_SESSION['viewed_pages'])){
+            $_SESSION['viewed_pages'] = [];
+        }
+        
+        array_unshift($_SESSION['viewed_pages'], urldecode($context['url']));
+        $context['viewed_pages'] = isset($_SESSION['viewed_pages']) ? $_SESSION['viewed_pages'] : [];
+
+        if(count($context['viewed_pages']) >= 10){
+            $context['viewed_pages'] = array_slice($context['viewed_pages'], 0, 10, true);
+        }
+
         return $context;
     }
 

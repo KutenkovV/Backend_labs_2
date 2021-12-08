@@ -32,6 +32,8 @@ class ObjectController extends BaseAnimeTwigController {
         $context['description'] = $data['description'];
         $context['ObjectID'] = $data['id'];
         $context['title'] = $data['title'];
+        $context["my_session_message"] = isset($_SESSION['welcome_message']) ? $_SESSION['welcome_message'] : "";
+        $context["messages"] = isset($_SESSION['messages']) ? $_SESSION['messages'] : "";
         
         return $context;
     }

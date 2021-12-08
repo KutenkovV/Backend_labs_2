@@ -10,6 +10,7 @@ require_once "../controllers/AnimeTypeCreateController.php";
 require_once "../controllers/AnimeObjectCreateController.php";
 require_once "../controllers/AnimeObjectDeleteController.php";
 require_once "../controllers/AnimeObjectUpdateController.php";
+require_once "../controllers/SetWelcomeController.php";
 require_once "../middlewares/LoginRequiredMiddeware.php";
 
 
@@ -34,6 +35,7 @@ $router->add("/anime-series/(?P<id>\d+)/delete", AnimeObjectDeleteController::cl
         ->middleware(new LoginRequiredMiddeware());
 $router->add("/anime-series/(?P<id>\d+)/edit", AnimeObjectUpdateController::class)
         ->middleware(new LoginRequiredMiddeware());
+$router->add("/set-welcome/", SetWelcomeController::class);
 
 $router->get_or_default(Controller404::class);
 ?>
