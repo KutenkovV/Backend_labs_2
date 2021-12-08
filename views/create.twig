@@ -23,9 +23,9 @@
         <div class="col-4">
             <label class="form-label">Тип</label>
             <select name="type" class="form-select">
-                <option value="Вестерн">Вестерн</option>
-                <option value="Экшен">Экшен</option>
-                <option value="Приключения">Приключения</option>
+                {% for type in anime_type %}
+                    <option value="{{ type.type_name }}">{{ type.type_name }}</option>
+                {% endfor %}
             </select>
         </div>
 

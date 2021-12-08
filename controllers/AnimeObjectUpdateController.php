@@ -8,6 +8,20 @@ class AnimeObjectUpdateController extends BaseAnimeTwigController
     public function getContext(): array
     {
         $context = parent::getContext();
+        
+        $type_name = isset($_GET['type_name']) ? $_GET['type_name'] : '';
+
+        $sqlShow = <<<EOL
+        SELECT type_name
+        FROM anime_type
+        EOL;
+
+        $query = $this->pdo->prepare($sqlShow);
+        $query->bindValue("type_name", $type_name);
+        $query->execute();
+
+        $context['anime_type'] = $query->fetchAll();
+        
         return $context;
     }
 

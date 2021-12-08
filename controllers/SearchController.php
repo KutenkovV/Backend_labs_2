@@ -13,6 +13,17 @@ class SearchController extends BaseAnimeTwigController {
         $title = isset($_GET['title']) ? $_GET['title'] : '';
         $info = isset($_GET['info']) ? $_GET['info'] : '';
 
+        $type_name = isset($_GET['type_name']) ? $_GET['type_name'] : '';
+
+        $sqlShow = <<<EOL
+        SELECT type_name
+        FROM anime_type
+        EOL;
+        $query = $this->pdo->prepare($sqlShow);
+        $query->bindValue("type_name", $type_name);
+        $query->execute();
+        $context['anime_type'] = $query->fetchAll();
+
         if (isset($_GET['type'])) {
             if(($_GET['type'])=="Все"){
                 $sql = <<< EOL

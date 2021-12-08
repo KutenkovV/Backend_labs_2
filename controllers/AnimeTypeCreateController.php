@@ -3,8 +3,9 @@ require_once "BaseAnimeTwigController.php";
 
 class AnimeTypeCreateController extends BaseAnimeTwigController {
     public $template = "type_create.twig";
+    
 
-    // здесь выводим, что есть в таблице
+    // GET CONTEXT
     public function getContext(): array {
         $context = parent::getContext();
 
@@ -15,7 +16,7 @@ $sqlShow = <<<EOL
 SELECT type_name, image
 FROM anime_type
 EOL;
-        $query = $this->pdo->prepare($sqlShow); //Выполняем запрос на вывод
+        $query = $this->pdo->prepare($sqlShow);
 
         $query->bindValue("type_name", $type_name);
         $query->bindValue("image", $image);

@@ -6,6 +6,8 @@
     {% endif %}
 {% endmacro %}
 
+{# абалдеть а макросы то работают! #}
+
 {% macro btnInf(title, object_type, ObjectID) %}
     {% if object_type == "info" %}
         <a class="btn btn-primary" href="{{ ObjectID }}?show=info">{{ title }}</a>

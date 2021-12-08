@@ -9,14 +9,14 @@
                 <div class="position-absolute flex-column aling-items-" style="right: 0px; top: 8px;">
                     {# кнопка удаления #}
                     <form action="/anime-series/{{ object.id }}/delete" method="POST">
-                        <button class="btn btn-light" type="submit">
+                        <button class="btn " type="submit">
                             <i class="fas fa-times"></i>
                         </button>
                     </form>
                     {# кнопка редактирования #}
-                        <A href="/anime-series/{{ object.id }}/edit" class="btn btn-light" type="submit">
-                            <i class="fas fa-edit"></i>
-                        </a>
+                    <a class="btn" href="/anime-series/{{ object.id }}/edit" type="submit">
+                        <i class="fas fa-edit"></i>
+                    </a>
                 </div>
                 <div>
                     <img src="{{ object.image }}" class="border border-2 rounded-3" style="width: 240px; height: 320px;">

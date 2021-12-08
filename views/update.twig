@@ -23,15 +23,9 @@
         <div class="col-4">
             <label class="form-label">Тип</label>
             <select name="type" class="form-select">
-                {# !!!! момент, где мы юзаем типы из новой таблицы ИМАО !!!! #}
-                {# {% for type in anime_type %}
-                    <option value="{{ type.name }}" {% if type.name == object.type %}selected{% endif %}>
-                        {{ type.name|title }}
-                    </option>
-                {% endfor %} #}
-                <option value="{{ object.type|title }}">Вестерн</option>
-                <option value="{{ object.type|title }}">Экшен</option>
-                <option value="{{ object.type|title }}">Приключения</option>
+                {% for type in anime_type %}
+                    <option value="{{ type.type_name }}">{{ type.type_name }}</option>
+                {% endfor %}
             </select>
         </div>
 
