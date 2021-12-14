@@ -57,22 +57,19 @@ class Router {
             }
         }
 
-            // echo "<pre>";
-            // print_r($_GET);
-            // echo "</pre>";
-
         $controllerInstance = new $controller();
         $controllerInstance->setPDO($this->pdo);
         $controllerInstance->setParams($mathes);
 
+        if ($controllerInstance instanceof TwigBaseController) {
+            $controllerInstance->setTwig($this->twig);
+        }
+
+        session_start();
         if ($newRoute) {
             foreach ($newRoute->middlewareList as $m) {
                 $m->apply($controllerInstance, []);
             }
-        }
-        
-        if ($controllerInstance instanceof TwigBaseController) {
-            $controllerInstance->setTwig($this->twig);
         }
 
         return $controllerInstance->process_response();

@@ -40,8 +40,10 @@
                         <a class="nav-link active" aria-current="page" href="/anime-series/type_create">Типы</a>
                     </li>
                 </ul>
-                <form action="/set-welcome/">
-                    <input type="text" name="message" class="form-control mr-2 ml-2">
+                <form action = "/exit" method="post">
+                    <button type = "submit" class="btn btn-light">
+                        <i class="p-2 fas fa-sign-out-alt"></i>
+                    </button>
                 </form>
             </div>
         </div>
@@ -66,31 +68,5 @@
             </div>
         </div>
     </div>
-
-
-
-
-    {# <div class="container mt-4">
-        <div class="row align-items-start">
-            <div class="col-9 align-self-start">
-                {% block content %}
-                    
-                {% endblock %}
-            </div>
-        </div>
-        <div class="col-3">
-            <p style="font-size: 1.25rem;">
-                Последние просмотренные страницы:
-            </p>
-            <div class="list-group">
-                {% for m in items %}
-                   <li class="list-group-item list-group-item-action list-group-item-dark"> 
-                       {{ m }}
-                    </li>
-                {% endfor %}
-            </div>
-        </div>
-    </div> #}
-
 </body>
 </html>

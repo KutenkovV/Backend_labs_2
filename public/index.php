@@ -10,7 +10,8 @@ require_once "../controllers/AnimeTypeCreateController.php";
 require_once "../controllers/AnimeObjectCreateController.php";
 require_once "../controllers/AnimeObjectDeleteController.php";
 require_once "../controllers/AnimeObjectUpdateController.php";
-require_once "../controllers/SetWelcomeController.php";
+require_once "../controllers/AuthenticationController.php";
+require_once "../controllers/ExitController.php";
 require_once "../middlewares/LoginRequiredMiddeware.php";
 
 
@@ -24,9 +25,12 @@ $pdo = new PDO("mysql:host=localhost;dbname=anime;charset=utf8", "root", "");
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $router = new Router($twig, $pdo);
-$router->add("/", MainController::class);
-$router->add("/anime-series/(?P<id>\d+)", ObjectController::class);
-$router->add("/search", SearchController::class);
+$router->add("/", MainController::class)
+        ->middleware(new LoginRequiredMiddeware());
+$router->add("/anime-series/(?P<id>\d+)", ObjectController::class)
+        ->middleware(new LoginRequiredMiddeware());
+$router->add("/search", SearchController::class)
+        ->middleware(new LoginRequiredMiddeware());
 $router->add("/anime-series/create", AnimeObjectCreateController::class)
         ->middleware(new LoginRequiredMiddeware());
 $router->add("/anime-series/type_create", AnimeTypeCreateController::class)
@@ -35,7 +39,9 @@ $router->add("/anime-series/(?P<id>\d+)/delete", AnimeObjectDeleteController::cl
         ->middleware(new LoginRequiredMiddeware());
 $router->add("/anime-series/(?P<id>\d+)/edit", AnimeObjectUpdateController::class)
         ->middleware(new LoginRequiredMiddeware());
-$router->add("/set-welcome/", SetWelcomeController::class);
+$router->add("/exit", ExitController::class)
+        ->middleware(new LoginRequiredMiddeware());
+$router->add("/Authentication", AuthenticationController::class);
 
 $router->get_or_default(Controller404::class);
 ?>

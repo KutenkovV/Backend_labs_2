@@ -19,9 +19,11 @@ class TwigBaseController extends BaseController {
     public function getContext() : array
     {
         $context = parent::getContext();
-        $context['title'] = $this->title;
-        $context['menu'] = $this->menu;
-
+        $context['title'] = $this->title; 
+        $query = $this->pdo->prepare("SELECT title, id FROM anime_series");
+        $query->execute(); 
+        $data = $query->fetchAll();
+        $context['menu'] = [];
         $url = $_SERVER["REQUEST_URI"];
         $context['url'] = $url;
 
@@ -35,7 +37,7 @@ class TwigBaseController extends BaseController {
         if(count($context['viewed_pages']) >= 10){
             $context['viewed_pages'] = array_slice($context['viewed_pages'], 0, 10, true);
         }
-
+        
         return $context;
     }
 
